@@ -24,6 +24,7 @@ public:
 	void end();
 	void caditshow();
 	void name_change();
+	void mem_delete();
 	attendance()
 	{
 		strcpy(name,"NULL");
@@ -264,4 +265,56 @@ void attendance::name_change()
 		printf("No member found\n");
 	else
 		printf("Changes updated.\n");
+}
+void attendance::mem_delete()
+{
+	while(1)
+	{
+		ifstream f7("database.dat",ios::in|ios::binary);
+		ofstream f7t("temp.dat",ios::out|ios::binary);
+		attendance ob;
+		int flag=1,no;
+		char choice;
+		show();
+		cout<<"Enter the serial number of member reffering the above attendance list\n";
+		cin>>no;
+		while(!f7.eof())
+		{	
+			f7.read((char*)&ob,sizeof(ob));
+			if(no==ob.srno)
+			{
+				cout<<"\n"<<ob.srno<<" "<<left<<setw(30)<<ob.name<<ob.att<<" | "<<ob.ab<<endl;
+				option:
+				printf("Are you sure you want to delete this member?? (Y/N)\n");
+				cin>>choice;
+				if(choice=='N'||choice=='n')
+						{	f7t.write((char*)&ob,sizeof(ob); }
+				else if(choice=='Y'||choice=='y')
+						{ 		}
+				else
+						{
+						printf("Wrong choice\n");
+						goto option;
+						}
+				flag=0;
+				break;
+			}
+			else
+			f7t.write((char*)&ob,sizeof(ob));
+		}
+		if(flag==1)
+			printf("No record found.\n");
+		f7.close();
+		f7t.close();
+		remove("database.dat");
+		rename("temp.dat","database.dat");
+		cout<<"Want to delete more records?? (Y/N)??\n";
+		cin>>choice;
+		if(choice=='y'||choice=='Y')
+				continue;
+			else if(choice=='n'||choice=='N')
+				break;
+			else
+				{	printf("Incorrect input. Further deletion aborted.\n\n"); break;	}
+	}
 }

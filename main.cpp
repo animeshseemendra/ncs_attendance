@@ -67,6 +67,18 @@ int main()
 				}while(1);
 				break;
 			}
+			case '7':
+				{
+					do{
+						ob.mem_delete();
+						printf("Want to delete any other member? \n");
+								scanf("%s",&choice);
+						if(choice=='y'||choice=='Y')
+							continue;
+						else if(choice=='n'||choice=='N')
+								break;	
+					}while(1);
+					break;
 			default:
 			{	printf("Incorrect input.\n\n");	break;}
 		}

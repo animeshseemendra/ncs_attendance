@@ -288,7 +288,7 @@ void attendance::mem_delete()
 				printf("Are you sure you want to delete this member?? (Y/N)\n");
 				cin>>choice;
 				if(choice=='N'||choice=='n')
-						{	f7t.write((char*)&ob,sizeof(ob); }
+						{	f7t.write((char*)&ob,sizeof(ob)); }
 				else if(choice=='Y'||choice=='y')
 						{ 		}
 				else

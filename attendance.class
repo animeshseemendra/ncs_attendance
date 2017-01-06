@@ -52,7 +52,7 @@ void attendance::begin()
 	printf("1. Take Attendance\n2. See Attendance record\n");
 	printf("3. Update any record\n4. Add new members!\n");
 	printf("5. View specific member's attendance record. \n");
-	printf("6. Edit name of a member.\n7. Delete specific member");
+	printf("6. Edit name of a member.\n7. Delete specific member.\n");
 }
 
 

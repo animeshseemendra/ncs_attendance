@@ -52,7 +52,7 @@ void attendance::begin()
 	printf("1. Take Attendance\n2. See Attendance record\n");
 	printf("3. Update any record\n4. Add new members!\n");
 	printf("5. View specific member's attendance record. \n");
-	printf("6. Edit name of a member.\n");
+	printf("6. Edit name of a member.\n7. Delete specific member");
 }
 
 
@@ -273,7 +273,7 @@ void attendance::mem_delete()
 		ifstream f7("database.dat",ios::in|ios::binary);
 		ofstream f7t("temp.dat",ios::out|ios::binary);
 		attendance ob;
-		int flag=1,no;
+		int flag=1,no,temp=0;
 		char choice;
 		show();
 		cout<<"Enter the serial number of member reffering the above attendance list\n";
@@ -288,9 +288,12 @@ void attendance::mem_delete()
 				printf("Are you sure you want to delete this member?? (Y/N)\n");
 				cin>>choice;
 				if(choice=='N'||choice=='n')
-						{	f7t.write((char*)&ob,sizeof(ob)); }
+						{	
+						
+						f7t.write((char*)&ob,sizeof(ob));
+						}
 				else if(choice=='Y'||choice=='y')
-						{ 		}
+						{ 	temp=1;	}
 				else
 						{
 						printf("Wrong choice\n");
@@ -300,7 +303,13 @@ void attendance::mem_delete()
 				
 			}
 			else
+			{
+			if(temp==1)
+			{
+			ob.srno=ob.srno-1;
+			}
 			f7t.write((char*)&ob,sizeof(ob));
+			}
 		}
 		if(flag==1)
 			printf("No record found.\n");

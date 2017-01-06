@@ -297,7 +297,7 @@ void attendance::mem_delete()
 						goto option;
 						}
 				flag=0;
-				break;
+				
 			}
 			else
 			f7t.write((char*)&ob,sizeof(ob));

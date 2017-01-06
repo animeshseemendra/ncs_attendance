@@ -79,6 +79,7 @@ int main()
 								break;	
 					}while(1);
 					break;
+				}
 			default:
 			{	printf("Incorrect input.\n\n");	break;}
 		}
